@@ -1,0 +1,123 @@
+/* Final reference-alignment pass: keep the 3D scene quiet and let the room sell the effect. */
+.replica-corner,
+.replica-view-label { display: none; }
+
+.replica-monitor-dom {
+  overflow: hidden;
+  background: #0d1117;
+}
+
+.replica-screen-page {
+  height: calc(100% - 24px);
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  overflow: hidden;
+}
+
+.replica-screen-nav { display: none; }
+
+.replica-screen-main {
+  min-height: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+.replica-screen-hero {
+  min-height: 570px;
+  padding: 42px 70px 34px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 0;
+}
+
+.replica-screen-hero::before {
+  content: "";
+  width: 84px;
+  height: 84px;
+  margin: 0 0 18px;
+  border: 1px solid #30363d;
+  background: #161b22 url("https://avatars.githubusercontent.com/u/187631406?v=4") center/cover no-repeat;
+  image-rendering: auto;
+}
+
+.replica-terminal-line {
+  order: -1;
+  width: 100%;
+  margin: 0 0 18px;
+  color: #484f58;
+  font-size: 12px;
+}
+
+.replica-terminal-line span { color: #484f58; }
+.replica-terminal-line::before { content: "~/intro.md - "; }
+.replica-terminal-line { font-size: 0; }
+.replica-terminal-line::before,
+.replica-terminal-line::after { font-size: 12px; }
+.replica-terminal-line::after { content: "double click to enter projects"; }
+.replica-terminal-line span { display: none; }
+
+.replica-screen-hero h1 {
+  font: 700 40px/1.05 "JetBrains Mono", monospace;
+  letter-spacing: -.04em;
+}
+
+.replica-role {
+  margin: 13px 0 0;
+  color: #8b949e;
+  font: 400 16px/1.4 "JetBrains Mono", monospace;
+}
+.replica-role::before { content: "$ "; color: #3fb950; }
+
+.replica-lede {
+  width: min(680px, 92%);
+  margin-top: 24px;
+  color: #8b949e;
+  font: 400 13px/1.65 "JetBrains Mono", monospace;
+}
+
+.replica-chips {
+  justify-content: center;
+  margin-top: 22px;
+}
+.replica-chips span {
+  padding: 6px 9px;
+  border-color: #30363d;
+  color: #8b949e;
+  background: #161b22;
+}
+
+/* Secondary content stays available by scrolling inside the monitor, like a real embedded site. */
+.replica-screen-section {
+  margin: 0 34px;
+  padding: 38px 20px;
+}
+
+.replica-screen-footer {
+  min-height: 50px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  border-top: 1px solid #30363d;
+  background: #161b22;
+  color: #f0f6fc;
+  font: 400 12px/1 "JetBrains Mono", monospace;
+}
+.replica-screen-footer span { display: none; }
+.replica-screen-footer::before {
+  content: "guest@lavine:~/app$";
+  color: #3fb950;
+}
+.replica-screen-footer::after {
+  content: "_";
+  color: #f0f6fc;
+  animation: terminal-cursor 1s steps(1) infinite;
+}
+
+@keyframes terminal-cursor {
+  0%, 48% { opacity: 1; }
+  49%, 100% { opacity: 0; }
+}
