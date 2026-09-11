@@ -1,0 +1,7 @@
+.css3d-mount { z-index: 3; }
+.webgl-mount { z-index: 2; }
+
+/* Keep the live HTML screen above the transparent WebGL canvas while the
+   smaller screen rectangle still leaves the 3D monitor bezel visible. */
+.workbench-css3d { pointer-events: none; }
+.monitor-dom { pointer-events: auto; }
