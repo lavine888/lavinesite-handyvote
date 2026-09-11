@@ -1,11 +1,5 @@
-import DigitalWorkbench from "@/components/DigitalWorkbench";
-import LavineSignature from "@/components/LavineSignature";
+import HandyReplica from "@/components/HandyReplica";
 
 export default function Home() {
-  return (
-    <>
-      <DigitalWorkbench />
-      <LavineSignature />
-    </>
-  );
+  return <HandyReplica />;
 }
