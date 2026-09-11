@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./handy-replica.css";
+import "./reference-alignment.css";
 
 export const metadata: Metadata = {
   title: "Lavine Xie — Digital Workbench",
