@@ -1,22 +1,33 @@
-# Lavine — Digital Workbench
+# Lavine — 3D Personal Workspace
 
-A cinematic personal website for **Lavine Xie**, built as an interactive digital workspace rather than a conventional portfolio.
+An interactive personal website for **Lavine Xie**, rebuilt around the spatial interaction pattern I liked in [HandyWote/MyWebsite](https://github.com/HandyWote/MyWebsite) / [handywote.top](https://www.handywote.top/).
 
-The experience is inspired by spatial portfolio websites where the interface lives inside a 3D scene, while the visual system, content, code, and scene direction are original to this project.
+The goal is not a conventional scroll portfolio. On desktop, the visitor starts inside a full-screen 3D room, can switch camera views by clicking the scene, inspect objects on the desk, and move into a **real HTML website embedded inside the 3D monitor**.
 
-## Direction
+The interaction and scene are independently reimplemented for this repository; third-party 3D models and textures are not copied.
 
-**AI Product Builder · Agent Systems · Quant · Creative Technology**
+## Current interaction
 
-The desktop experience opens inside Lavine's digital workbench and moves through a cinematic camera sequence into the portfolio itself. Mobile and reduced-motion users receive a lightweight 2D experience.
+- cinematic idle camera with subtle pointer tracking
+- click the room to move between wide and desk views
+- hover the monitor to fly into the website
+- the monitor content is real interactive DOM via `CSS3DRenderer`
+- click the desk paper for a close-up view
+- lightweight non-3D fallback for touch devices and reduced-motion users
+
+## Identity
+
+**Lavine Xie — AI Product Builder**
+
+Math → Computer Science → AI products. Current threads include agent systems, AI-native education, creative technology, quantitative ideas, and building in public.
 
 ## Stack
 
-- Next.js
-- React
+- Next.js 16
+- React 19
 - Three.js
+- CSS3DRenderer
 - TypeScript
-- CSS
 
 ## Local development
 
@@ -25,4 +36,4 @@ npm install
 npm run dev
 ```
 
-Then open `http://localhost:3000`.
+Open `http://localhost:3000` on a desktop browser for the full 3D experience.
