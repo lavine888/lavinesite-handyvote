@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./scene-fixes.css";
 
 export const metadata: Metadata = {
   title: "Lavine Xie — Digital Workbench",
