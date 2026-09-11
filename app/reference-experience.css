@@ -1,0 +1,148 @@
+:root {
+  --reference-bg: #0d1117;
+  --reference-panel: #161b22;
+  --reference-border: #30363d;
+  --reference-text: #f0f6fc;
+  --reference-muted: #8b949e;
+  --reference-blue: #58a6ff;
+  --reference-green: #3fb950;
+  --reference-viewport-height: calc(100dvh - 24px);
+}
+
+html { scrollbar-width: thin; scrollbar-color: var(--reference-border) var(--reference-panel); }
+body { background: #030504; color: var(--reference-text); }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 8px;
+  z-index: 9999;
+  border: 1px solid var(--reference-blue);
+  pointer-events: none;
+}
+
+body:has(.reference-experience[data-reference-experience="desktop"])::before { display: none; }
+
+#app-root {
+  min-height: 100vh;
+  padding: 12px;
+}
+
+.reference-experience {
+  position: relative;
+  width: 100%;
+  height: var(--reference-viewport-height);
+  min-height: 560px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #030504;
+  color: var(--reference-text);
+}
+
+.reference-experience__scene { position: absolute; inset: 0; }
+.reference-scene__css,
+.reference-scene__paper,
+.reference-scene canvas { pointer-events: auto; }
+.reference-scene canvas { pointer-events: none; }
+.reference-scene__css { z-index: 1; }
+.reference-scene canvas { z-index: 2; }
+.reference-scene__paper { z-index: 3; pointer-events: none; }
+.reference-scene__parking { z-index: 0; }
+
+.reference-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 15px;
+  background: #030504;
+  pointer-events: none;
+  animation: reference-loader-out .9s ease 1.5s forwards;
+}
+.reference-loader span {
+  color: #b5beb8;
+  font: 500 10px/1.2 "JetBrains Mono", monospace;
+  letter-spacing: .18em;
+}
+.reference-loader i {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #7ca28a, transparent);
+  animation: reference-loader-line 1.2s ease-in-out infinite;
+}
+@keyframes reference-loader-line {
+  0%, 100% { transform: scaleX(.25); opacity: .3; }
+  50% { transform: scaleX(1); opacity: 1; }
+}
+@keyframes reference-loader-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
+.reference-mobile-frame {
+  min-height: var(--reference-viewport-height);
+  background: var(--reference-bg);
+  color: var(--reference-text);
+  overflow: auto;
+  font-family: "JetBrains Mono", monospace;
+}
+.reference-mobile-header {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--reference-border);
+  color: var(--reference-muted);
+  font-size: 10px;
+}
+.reference-mobile-content { min-height: calc(var(--reference-viewport-height) - 48px); }
+
+.reference-paper-content {
+  width: 100%;
+  height: 100%;
+  padding: 74px 58px;
+  background: #d2cbb4;
+  color: #292b27;
+  font-family: Georgia, serif;
+}
+.reference-paper-content p:first-child,
+.reference-paper-content small {
+  font: 700 13px/1.2 "JetBrains Mono", monospace;
+  letter-spacing: .1em;
+  color: #676151;
+}
+.reference-paper-content h2 { margin: 38px 0 28px; font-size: 48px; line-height: 1.02; font-weight: 500; }
+.reference-paper-content hr { border: 0; border-top: 1px solid #7b735f; margin: 30px 0; opacity: .55; }
+.reference-paper-content span { display: block; margin: 20px 0; font-size: 23px; }
+.reference-paper-content small { display: block; margin-top: 80px; font-weight: 600; }
+
+.reference-scene-error {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  z-index: 40;
+  width: min(420px, calc(100% - 32px));
+  padding: 16px;
+  border: 1px solid #f85149;
+  background: var(--reference-panel);
+  color: var(--reference-text);
+  transform: translateX(-50%);
+  font: 12px/1.5 "JetBrains Mono", monospace;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  body::before { inset: 6px; }
+  #app-root { padding: 10px; }
+  .reference-mobile-header { padding: 0 2px; }
+  .reference-paper-content { padding: 34px 24px; }
+  .reference-paper-content h2 { font-size: 34px; }
+  .reference-paper-content span { font-size: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reference-loader,
+  .reference-loader i { animation: none; }
+  .reference-loader { opacity: 0; visibility: hidden; }
+}

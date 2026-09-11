@@ -1,5 +1,5 @@
-import HandyReplica from "@/components/HandyReplica";
+import { HomeScreen } from "@/components/ReferencePages";
 
 export default function Home() {
-  return <HandyReplica />;
+  return <HomeScreen />;
 }

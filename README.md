@@ -4,7 +4,7 @@ An interactive personal website for **Lavine Xie**, rebuilt around the spatial i
 
 The goal is not a conventional scroll portfolio. On desktop, the visitor starts inside a full-screen 3D room, can switch camera views by clicking the scene, inspect objects on the desk, and move into a **real HTML website embedded inside the 3D monitor**.
 
-The interaction and scene are independently reimplemented for this repository; third-party 3D models and textures are not copied.
+The current build includes the original site's `public/3d/v1` models/textures and `avatar.webp`, sourced from HandyWote/MyWebsite. Maintainers must confirm the applicable asset licenses before redistribution.
 
 ## Current interaction
 
@@ -14,6 +14,8 @@ The interaction and scene are independently reimplemented for this repository; t
 - the monitor content is real interactive DOM via `CSS3DRenderer`
 - click the desk paper for a close-up view
 - lightweight non-3D fallback for touch devices and reduced-motion users
+- terminal command bar with `cd`, `open latest`, and `help` navigation
+- static `/articles`, `/projects`, and `/about` routes
 
 ## Identity
 
