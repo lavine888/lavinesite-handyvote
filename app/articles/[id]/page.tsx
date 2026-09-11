@@ -29,7 +29,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
   const { id } = await params;
   const article = articles[id] ?? articles["1"];
   return (
-    <ReferencePageShell title={article.title}>
+    <ReferencePageShell title={article.title} cwd="~/app/articles">
       <p className="reference-page-kicker">ARTICLE / {id.padStart(2, "0")}</p>
       {article.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       <p className="reference-page-links"><Link href="/articles">← all articles</Link></p>

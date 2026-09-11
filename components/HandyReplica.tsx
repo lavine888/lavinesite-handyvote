@@ -10,13 +10,13 @@ type Props = { children: ReactNode };
 function PaperContent() {
   return (
     <div className="reference-paper-content">
-      <p>SCRATCHPAD / ACTIVE THREADS</p>
-      <h2>Build things that feel one step ahead.</h2>
+      <p>NOW / CURRENT DIRECTION</p>
+      <h2>Small systems, real feedback.</h2>
       <hr />
-      <span>AI-native education</span>
-      <span>Agent systems</span>
-      <span>Quant experiments</span>
-      <small>Lavine · build in public</small>
+      <a href="/projects/bull-bear-exchange-island"><strong>01</strong><span>AI-native learning worlds</span><small>turn abstract ideas into places you can explore</small></a>
+      <a href="/projects/agent-jam"><strong>02</strong><span>Agent workbench / review loop</span><small>make context and decisions visible</small></a>
+      <a href="/projects/pandaai-quant"><strong>03</strong><span>Point-in-time quant research</span><small>keep signals auditable from data to result</small></a>
+      <small className="reference-paper-updated">Updated · September 2026 · Hong Kong</small>
     </div>
   );
 }
@@ -25,7 +25,7 @@ function MobileFrame({ children }: Props) {
   return (
     <main className="reference-mobile-frame">
       <header className="reference-mobile-header">
-        <span>&gt;_ Lavine</span>
+        <span className="reference-mobile-brand"><img src="/lavine-logo.png" alt="" />&gt;_ Lavine</span>
         <span>AI PRODUCT BUILDER</span>
       </header>
       <div className="reference-mobile-content">{children}</div>

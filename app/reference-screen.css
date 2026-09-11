@@ -20,8 +20,102 @@
 .reference-home-sections{border-top:1px solid #26372a;display:grid;gap:18px;grid-template-columns:repeat(3,1fr);margin-top:30px;padding-top:17px}.reference-home-sections section{min-width:0}.reference-home-sections h2{color:var(--muted);font-size:10px;font-weight:400;letter-spacing:.14em;margin:0 0 8px;text-transform:uppercase}.reference-home-sections p,.reference-home-sections a{color:#b8c7b8;font-size:11px;line-height:1.6;margin:4px 0;text-decoration:none}.reference-home-sections a:hover{color:var(--green)}.reference-home-sections small{color:var(--muted);font-size:9px}.reference-home-github{grid-column:1/-1;border-top:1px solid #26372a;padding-top:14px}.reference-home-github h2 a{float:right;color:var(--muted);font-size:10px;letter-spacing:0;text-transform:none}.reference-home-github .reference-activity{max-width:none}.reference-home-github .reference-activity i{height:9px}@media(max-width:650px){.reference-home-sections{grid-template-columns:repeat(2,1fr)}.reference-home-github{grid-column:1/-1}}
 /* CSS3D monitor pages use the complete host surface; inner sections retain readable widths. */
 #screen-host>.reference-page-shell{width:100%;max-width:none;margin:0}
-.reference-home-content{align-items:center;display:flex;flex-direction:column;justify-content:center;min-height:0;overflow:auto;padding:40px 32px;width:100%}.reference-home-content .reference-home-intro,.reference-home-content .reference-home-sections{width:min(520px,100%)}.reference-home-content .reference-home-intro{border-left:0;text-align:center}.reference-home-content .reference-home-intro .reference-avatar{float:none;margin:0 auto 16px}.reference-home-content .reference-home-sections{text-align:left}@media(max-width:650px){.reference-home-content{padding:28px 20px}.reference-home-content .reference-home-intro h1{font-size:28px}}
+.reference-home-content{align-items:center;display:flex;flex-direction:column;justify-content:flex-start;min-height:0;overflow:auto;padding:28px 32px 20px;width:100%}.reference-home-content .reference-home-intro,.reference-home-content .reference-home-sections{width:min(520px,100%)}.reference-home-content .reference-home-intro{border-left:0;text-align:center}.reference-home-content .reference-home-intro .reference-avatar{float:none;margin:0 auto 16px}.reference-home-content .reference-home-sections{text-align:left}@media(max-width:650px){.reference-home-content{padding:28px 20px}.reference-home-content .reference-home-intro h1{font-size:28px}}
 .reference-home-content .reference-home-intro,.reference-home-content .reference-home-sections{width:min(820px,100%)}.reference-home-sections{border-top:0;gap:14px;grid-template-columns:1fr;text-align:center}.reference-home-github{border-top:0;grid-column:auto;padding-top:0}.reference-home-sections section{min-height:0}.reference-home-sections section:not(.reference-home-github){padding:4px 0}.reference-home-github .reference-activity{margin:0 auto;max-width:500px}
 .reference-home-content .reference-home-intro{width:min(820px,100%);text-align:center}.reference-home-content .reference-home-sections{width:min(820px,100%);grid-template-columns:1fr;gap:14px;text-align:center}.reference-home-intro h1 span{color:var(--muted);font-size:11px;font-weight:400}.reference-home-intro .reference-name{color:var(--green)}
 .reference-home-intro{padding:0}.reference-home-sections{margin-top:10px;padding-top:0}.reference-home-sections section:first-child a{display:block}.reference-home-github .reference-activity{width:min(634px,100%);max-width:none;grid-template-columns:repeat(53,minmax(0,1fr));grid-auto-rows:10px;gap:2px;margin-left:auto;margin-right:auto}.reference-home-github{overflow:hidden}@media(max-width:650px){.reference-home-github .reference-activity{width:100%;grid-template-columns:repeat(53,minmax(0,1fr));gap:1px;grid-auto-rows:8px}}
 .reference-home-hint{color:var(--muted);font-size:10px;margin:20px 0 0;text-align:center}
+
+/* Personal identity and clearer monitor information architecture. */
+.reference-home-identity{align-items:center;display:flex;gap:24px;justify-content:center;margin-top:18px;text-align:left}
+.reference-home-mark{align-items:center;display:flex;flex:0 0 auto;flex-direction:column;gap:7px}
+.reference-logo{background:#d6a85a;border:1px solid rgba(214,168,90,.75);border-radius:22px;box-shadow:0 10px 28px rgba(0,0,0,.24),0 0 0 4px rgba(214,168,90,.09);height:88px;object-fit:contain;padding:10px;width:88px}
+.reference-home-mark>span{color:#d6a85a;font-size:9px;letter-spacing:.16em}
+.reference-home-copy{min-width:0}
+.reference-home-title-row{align-items:baseline;display:flex;flex-wrap:wrap;gap:10px}
+.reference-home-title-row h1{font-size:clamp(29px,5vw,44px)!important;letter-spacing:-.04em;margin:0!important}
+.reference-home-title-row>span{color:var(--muted);font-size:11px;letter-spacing:.02em}
+.reference-home-signal-row{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:13px}
+.reference-home-signal-row span{border:1px solid rgba(63,185,80,.38);border-radius:999px;color:#b8c7b8;font-size:9px;padding:4px 8px}
+.reference-home-signal-row b{color:var(--green);font-size:8px;font-weight:500;letter-spacing:.12em;margin-right:4px}
+.reference-home-sections{align-items:stretch;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:22px}
+.reference-home-panel{background:linear-gradient(145deg,rgba(22,27,34,.78),rgba(13,17,23,.7));border:1px solid rgba(48,54,61,.9);border-radius:8px;min-width:0;padding:12px 14px;text-align:left}
+.reference-home-panel-heading{align-items:baseline;border-bottom:1px solid rgba(48,54,61,.78);display:flex;gap:12px;justify-content:space-between;margin-bottom:10px;padding-bottom:7px}
+.reference-home-panel-heading h2{color:var(--muted);font-size:9px;font-weight:500;letter-spacing:.16em;margin:0;text-transform:uppercase}
+.reference-home-panel-heading>a,.reference-home-panel-heading>span:not(.reference-home-online){color:var(--muted);font-size:9px;text-decoration:none}
+.reference-home-panel-heading>a:hover,.reference-home-panel-heading>span a:hover{color:var(--blue,#58a6ff)}
+.reference-home-panel-body{display:grid;gap:7px}
+.reference-home-panel-body a{align-items:center;color:#b8c7b8;display:flex;font-size:11px;justify-content:space-between;text-decoration:none}
+.reference-home-panel-body a:hover{color:var(--green)}
+.reference-home-panel-body a span{color:var(--muted);font-size:10px}
+.reference-home-panel-body p{margin:0}
+.reference-home-panel-body strong{color:#d9e5d7;display:block;font-size:11px;font-weight:400}
+.reference-home-panel-body small{color:var(--muted);display:block;font-size:9px;line-height:1.45;margin-top:2px}
+.reference-home-tags{display:flex;flex-wrap:wrap;gap:6px}
+.reference-home-tags span{background:rgba(88,166,255,.08);border:1px solid rgba(88,166,255,.3);border-radius:4px;color:#b8c7b8;font-size:9px;padding:4px 6px}
+.reference-home-projects,.reference-home-github,.reference-home-explore{grid-column:1/-1}
+.reference-home-project-list{display:grid;gap:6px}
+.reference-home-project-card{align-items:center;border:1px solid rgba(48,54,61,.72);border-radius:5px;color:inherit;display:grid;gap:10px;grid-template-columns:28px minmax(0,1fr) auto;padding:8px 9px;text-decoration:none;transition:background .18s ease,border-color .18s ease}
+.reference-home-project-card:hover{background:rgba(63,185,80,.07);border-color:rgba(63,185,80,.5)}
+.reference-home-project-id{color:var(--green);font-size:9px}
+.reference-home-project-copy{min-width:0}
+.reference-home-project-copy strong{color:#d9e5d7;display:block;font-size:11px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.reference-home-project-copy small{color:var(--muted);display:block;font-size:9px;line-height:1.4;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.reference-home-project-arrow{color:var(--muted);font-size:11px}
+.reference-home-github .reference-activity{margin:0 auto;width:min(634px,100%)}
+.reference-home-activity-meta{align-items:center;display:flex;justify-content:space-between;margin-top:7px}
+.reference-home-activity-meta small{color:var(--muted);font-size:9px}
+.reference-home-quick-links{display:grid;gap:6px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.reference-home-quick-links a{border:1px solid rgba(48,54,61,.72);border-radius:5px;display:grid;gap:3px;padding:8px 9px;text-decoration:none;transition:background .18s ease,border-color .18s ease}
+.reference-home-quick-links a:hover{background:rgba(88,166,255,.08);border-color:rgba(88,166,255,.45)}
+.reference-home-quick-links b{color:var(--green);font-size:8px;font-weight:500}
+.reference-home-quick-links span{color:#d9e5d7;font-size:10px}
+.reference-home-quick-links small{color:var(--muted);font-size:8px;line-height:1.3}
+.reference-home-online{align-items:center;color:var(--muted);display:inline-flex;font-size:9px;gap:5px;white-space:nowrap}
+.reference-home-online i{background:var(--green);border-radius:50%;box-shadow:0 0 0 3px rgba(63,185,80,.12);display:inline-block;height:5px;width:5px}
+.reference-page-heading{margin-bottom:18px}
+.reference-page-title-row{align-items:baseline;display:flex;gap:16px;justify-content:space-between}
+.reference-page-title-row h1{margin:0}
+.reference-page-home{color:var(--muted);font-size:10px;text-decoration:none}
+.reference-page-home:hover{color:var(--green)}
+.reference-page-links{align-items:center;display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.reference-page-links a{color:var(--muted);font-size:10px;text-decoration:none}
+.reference-page-links a:hover{color:var(--green)}
+.reference-paper-content>p:first-child{margin:0 0 12px}
+.reference-paper-content>a{border-bottom:1px solid rgba(103,97,81,.5);color:#292b27;display:grid;gap:8px;grid-template-columns:28px minmax(0,1fr);padding:13px 0;text-decoration:none}
+.reference-paper-content>a:hover{color:#526653}
+.reference-paper-content>a strong{color:#7a6a3e;font:700 14px/1.2 "JetBrains Mono",monospace}
+.reference-paper-content>a span{font-size:21px;line-height:1.15;margin:0}
+.reference-paper-content>a small{color:#676151;display:block;font-size:12px;grid-column:2;line-height:1.35;margin:0}
+.reference-paper-content .reference-paper-updated{color:#676151;display:block;font-size:11px;line-height:1.3;margin-top:28px}
+.reference-mobile-brand{align-items:center;display:inline-flex;gap:7px}
+.reference-mobile-brand img{background:#d6a85a;border-radius:5px;height:19px;object-fit:contain;padding:2px;width:19px}
+@media(max-width:650px){
+  .reference-home-identity{flex-direction:column;gap:14px;text-align:center}
+  .reference-home-copy{width:100%}
+  .reference-home-title-row{justify-content:center}
+  .reference-home-signal-row{justify-content:center}
+  .reference-home-sections{grid-template-columns:1fr}
+  .reference-home-quick-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .reference-home-projects,.reference-home-github,.reference-home-explore{grid-column:auto}
+  .reference-logo{height:76px;width:76px}
+}
+.reference-case-grid{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:20px}
+.reference-case-grid section{background:rgba(22,27,34,.54);border:1px solid rgba(48,54,61,.82);border-radius:6px;padding:13px 14px}
+.reference-case-grid h2,.reference-about-section h2{color:var(--muted);font-size:10px;font-weight:500;letter-spacing:.16em;margin:0 0 8px;text-transform:uppercase}
+.reference-case-grid p,.reference-about-section p{color:#b8c7b8;font-size:12px;line-height:1.65;margin:0}
+.reference-case-tags{display:flex;flex-wrap:wrap;gap:6px}
+.reference-case-tags span{border:1px solid rgba(63,185,80,.36);border-radius:4px;color:#b8c7b8;font-size:9px;padding:4px 6px}
+.reference-case-actions{align-items:center;display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.reference-case-actions a{border:1px solid rgba(88,166,255,.42);border-radius:5px;color:#b8c7b8;font-size:10px;padding:7px 10px;text-decoration:none}
+.reference-case-actions a:hover{background:rgba(88,166,255,.09);color:var(--reference-blue)}
+.reference-about-section{border-top:1px solid rgba(48,54,61,.82);margin-top:22px;padding-top:14px;scroll-margin-top:18px}
+@media(max-width:650px){.reference-case-grid{grid-template-columns:1fr}.reference-case-grid p,.reference-about-section p{font-size:11px}}
+
+/* Keep the monitor's first view compact while preserving the richer panel hierarchy. */
+.reference-home-content .reference-home-sections{grid-template-columns:repeat(2,minmax(0,1fr))}
+.reference-home-content .reference-home-sections>.reference-home-panel:nth-child(3){grid-column:1/-1}
+@media(max-width:650px){
+  .reference-home-content .reference-home-sections{grid-template-columns:1fr}
+  .reference-home-content .reference-home-sections>.reference-home-panel:nth-child(3){grid-column:auto}
+}

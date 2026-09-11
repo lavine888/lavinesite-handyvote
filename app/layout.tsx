@@ -9,6 +9,10 @@ import HandyReplica from "@/components/HandyReplica";
 export const metadata: Metadata = {
   title: "Lavine Xie — Digital Workbench",
   description: "AI Product Builder working across agent systems, creative technology and quantitative ideas.",
+  icons: {
+    icon: [{ url: "/lavine-logo.png", type: "image/png" }],
+    apple: "/lavine-logo.png",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

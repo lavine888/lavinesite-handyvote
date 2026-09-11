@@ -9,7 +9,7 @@ const articles = [
 
 export default function ArticlesPage() {
   return (
-    <ReferencePageShell title="Articles">
+    <ReferencePageShell title="Articles" cwd="~/app/articles">
       <p className="reference-page-lede">Writing on products, agents, quantitative research, and learning systems.</p>
       <div className="reference-list">
         {articles.map(([id, title, summary]) => (
