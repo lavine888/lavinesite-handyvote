@@ -179,7 +179,6 @@ export default function DigitalWorkbench() {
 
     const scene = new THREE.Scene();
     const cssScene = new THREE.Scene();
-    scene.background = new THREE.Color(0x050706);
     scene.fog = new THREE.FogExp2(0x050706, 0.035);
 
     const camera = new THREE.PerspectiveCamera(
@@ -190,9 +189,16 @@ export default function DigitalWorkbench() {
     );
     camera.position.copy(poses.loading.position);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+    // Important: WebGL stays transparent so the real DOM monitor can sit underneath it.
+    // The 3D bezel is modeled as four separate bars, leaving an actual transparent hole.
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      powerPreference: "high-performance",
+    });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 0);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -220,11 +226,9 @@ export default function DigitalWorkbench() {
     const paperMat = new THREE.MeshStandardMaterial({ color: 0xc9c2aa, roughness: 0.9, metalness: 0 });
     const green = new THREE.MeshStandardMaterial({ color: 0x315747, roughness: 0.85 });
     const leaf = new THREE.MeshStandardMaterial({ color: 0x34533f, roughness: 0.86 });
-    const accent = new THREE.MeshStandardMaterial({ color: 0x75a77f, emissive: 0x183921, emissiveIntensity: 0.35, roughness: 0.4 });
     const gold = new THREE.MeshStandardMaterial({ color: 0xaa8753, emissive: 0x2c1c09, emissiveIntensity: 0.22, roughness: 0.45, metalness: 0.45 });
-    const screenGlow = new THREE.MeshBasicMaterial({ color: 0x14231d });
 
-    // Architectural shell — intentionally simple, so it reads like the same kind of baked 3D room without copying its assets.
+    // Architectural shell — similar spatial composition, but all geometry here is original.
     addBox(room, [26, 0.3, 22], [0, -0.55, -1], matte);
     addBox(room, [26, 13, 0.34], [0, 5.8, -8.8], wall);
     addBox(room, [0.34, 13, 22], [-12.3, 5.8, -1], wall);
@@ -238,13 +242,16 @@ export default function DigitalWorkbench() {
     addBox(room, [0.48, 4.1, 0.48], [-5.55, -1.9, 1.55], black);
     addBox(room, [0.48, 4.1, 0.48], [5.55, -1.9, 1.55], black);
 
-    // Monitor shell, stand, and glow plane.
-    addBox(room, [6.55, 4.12, 0.38], [0, 2.75, -1.25], monitorBlack);
-    addBox(room, [6.02, 3.55, 0.06], [0, 2.75, -1.025], screenGlow);
-    addBox(room, [0.48, 1.55, 0.42], [0, 0.76, -1.38], silver);
-    addBox(room, [2.55, 0.18, 1.14], [0, 0.12, -1.3], silver);
+    // Open monitor bezel. Do NOT place a WebGL plane across the screen rectangle:
+    // that transparent hole is where the CSS3D website becomes visible.
+    addBox(room, [6.55, 0.29, 0.38], [0, 4.665, -1.25], monitorBlack);
+    addBox(room, [6.55, 0.29, 0.38], [0, 0.835, -1.25], monitorBlack);
+    addBox(room, [0.29, 3.55, 0.38], [-3.13, 2.75, -1.25], monitorBlack);
+    addBox(room, [0.29, 3.55, 0.38], [3.13, 2.75, -1.25], monitorBlack);
+    addBox(room, [0.48, 1.55, 0.42], [0, 0.02, -1.38], silver);
+    addBox(room, [2.55, 0.18, 1.14], [0, -0.66, -1.3], silver);
 
-    // Keyboard with actual keys so the desk has the same dense prop feeling as the reference.
+    // Keyboard with actual keys so the desk has dense prop detail like the reference.
     addBox(room, [5.15, 0.2, 1.65], [0.35, 0.43, 1.32], black, [-0.06, 0, 0]);
     const keyMaterial = new THREE.MeshStandardMaterial({ color: 0x1b211e, roughness: 0.58, metalness: 0.12 });
     for (let rowIndex = 0; rowIndex < 4; rowIndex += 1) {
@@ -283,8 +290,7 @@ export default function DigitalWorkbench() {
 
     // Lamp.
     addCylinder(room, 0.5, 0.62, 0.13, [-4.85, 0.47, 1.48], black, 28);
-    const lampArm = addBox(room, [0.16, 2.7, 0.16], [-4.65, 1.75, 1.28], silver, [0, 0, -0.28]);
-    lampArm.castShadow = true;
+    addBox(room, [0.16, 2.7, 0.16], [-4.65, 1.75, 1.28], silver, [0, 0, -0.28]);
     const shade = new THREE.Mesh(new THREE.ConeGeometry(0.72, 1.15, 28, 1, true), black);
     shade.position.set(-4.05, 3.02, 1.16);
     shade.rotation.z = -0.72;
@@ -324,14 +330,13 @@ export default function DigitalWorkbench() {
 
     // Desk paper is a second interaction target.
     const paper = addBox(room, [2.25, 0.04, 2.95], [-3.05, 0.4, 1.65], paperMat, [0, 0.14, 0]);
-    paper.userData.interactive = "paper";
     const lineMaterial = new THREE.MeshBasicMaterial({ color: 0x57564d });
     for (let i = 0; i < 6; i += 1) {
       addBox(room, [1.45 - i * 0.07, 0.012, 0.035], [-3.08, 0.435, 0.92 + i * 0.31], lineMaterial, [0, 0.14, 0]);
     }
     addBox(room, [0.13, 0.02, 2.3], [-3.7, 0.44, 1.65], gold, [0, 0.14, 0]);
 
-    // A tiny physical signature on the desk, not a HUD overlay.
+    // Tiny physical signature, rather than a floating marketing HUD.
     const labelCanvas = document.createElement("canvas");
     labelCanvas.width = 768;
     labelCanvas.height = 192;
@@ -370,20 +375,18 @@ export default function DigitalWorkbench() {
     monitorLight.position.set(0, 2.8, 0.2);
     scene.add(monitorLight);
 
-    // CSS3D monitor: the page is real DOM, not a texture.
+    // Real HTML page positioned inside the open monitor bezel.
     const screen = document.createElement("div");
     screen.className = "monitor-dom";
     screen.innerHTML = buildScreenMarkup();
     const screenObject = new CSS3DObject(screen);
-    screenObject.position.set(0, 2.75, -1.0);
+    screenObject.position.set(0, 2.75, -1.04);
     screenObject.scale.setScalar(0.00604);
     cssScene.add(screenObject);
 
-    let currentView: ViewMode = "loading";
     let desiredView: ViewMode = "loading";
     const setCameraView = (next: ViewMode) => {
       desiredView = next;
-      currentView = next;
       setView(next);
     };
 
@@ -421,7 +424,7 @@ export default function DigitalWorkbench() {
     const target = poses.loading.target.clone();
     const clock = new THREE.Clock();
     let raf = 0;
-    let introTimer = window.setTimeout(() => {
+    const introTimer = window.setTimeout(() => {
       setReady(true);
       setCameraView("idle");
     }, 720);
