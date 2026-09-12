@@ -36,4 +36,9 @@ export const sources: readonly ResourceSource[] = [
 		type: "texture",
 		path: "/3d/v1/textures/monitor-shadow.webp",
 	},
+	{
+		name: "lavineLogoTexture",
+		type: "texture",
+		path: "/lavine-logo.png",
+	},
 ];

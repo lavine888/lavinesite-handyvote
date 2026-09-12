@@ -11,7 +11,8 @@ export type TextureSourceName =
   | 'environmentTexture'
   | 'decorTexture'
   | 'monitorSmudgeTexture'
-  | 'monitorShadowTexture';
+  | 'monitorShadowTexture'
+  | 'lavineLogoTexture';
 
 export type ModelSource = {
   name: ModelSourceName;

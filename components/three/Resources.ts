@@ -24,7 +24,7 @@ function basePath(path: string): string {
 function safeAssetPath(source: ModelSource | TextureSource): string {
   const pattern = source.type === 'model'
     ? /^\/3d\/v1\/models\/[A-Za-z0-9._-]+\.glb$/
-    : /^\/3d\/v1\/textures\/[A-Za-z0-9._-]+\.webp$/;
+    : /^(?:\/3d\/v1\/textures\/[A-Za-z0-9._-]+\.webp|\/lavine-logo\.png)$/;
   if (!pattern.test(source.path)) throw new Error(`Unsupported ${source.type} asset path: ${source.path}`);
   return source.path;
 }

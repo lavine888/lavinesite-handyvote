@@ -111,6 +111,10 @@ export class World {
 			? this.textures.get(textureName)
 			: undefined;
 		if (cachedTexture) model.applyTexture(cachedTexture, true);
+		if (source.name === COMPUTER_MODEL_NAME && model instanceof Computer) {
+			const cachedLogo = this.textures.get("lavineLogoTexture");
+			if (cachedLogo) model.addLogo(cachedLogo);
+		}
 
 		if (source.name === COMPUTER_MODEL_NAME) {
 			this.monitor?.destroy();
@@ -198,6 +202,11 @@ export class World {
 			this.monitor?.addSmudge(texture, false);
 		if (name === "monitorShadowTexture")
 			this.monitor?.addShadow(texture, false);
+		if (name === "lavineLogoTexture") {
+			const computer = this.models.get(COMPUTER_MODEL_NAME);
+			if (computer instanceof Computer)
+				computer.addLogo(texture);
+		}
 	}
 
 	private handleError(event: ResourceErrorEvent): void {
