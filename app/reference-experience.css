@@ -99,23 +99,47 @@ body:has(.reference-experience[data-reference-experience="desktop"])::before { d
 .reference-mobile-content { min-height: calc(var(--reference-viewport-height) - 48px); }
 
 .reference-paper-content {
+  box-sizing: border-box;
+  position: relative;
   width: 100%;
   height: 100%;
-  padding: 74px 58px;
+  padding: 60px 58px 54px;
   background: #d2cbb4;
   color: #292b27;
   font-family: Georgia, serif;
 }
+.reference-paper-static { position: relative; z-index: 2; pointer-events: none; }
+.reference-paper-static .reference-paper-links { pointer-events: auto; }
 .reference-paper-content p:first-child,
 .reference-paper-content small {
   font: 700 13px/1.2 "JetBrains Mono", monospace;
   letter-spacing: .1em;
   color: #676151;
 }
-.reference-paper-content h2 { margin: 38px 0 28px; font-size: 48px; line-height: 1.02; font-weight: 500; }
-.reference-paper-content hr { border: 0; border-top: 1px solid #7b735f; margin: 30px 0; opacity: .55; }
-.reference-paper-content span { display: block; margin: 20px 0; font-size: 23px; }
-.reference-paper-content small { display: block; margin-top: 80px; font-weight: 600; }
+.reference-paper-intro { border-bottom: 1px solid rgba(123,115,95,.55); padding-bottom: 24px; }
+.reference-paper-intro p:first-child { margin: 0 0 28px; }
+.reference-paper-content h2 { margin: 0; font-size: 48px; line-height: 1.02; font-weight: 500; letter-spacing: -.035em; }
+.reference-paper-summary { color: #676151; font: 12px/1.55 "JetBrains Mono", monospace; margin: 22px 0 0; max-width: 390px; }
+.reference-paper-links { border-bottom: 1px solid rgba(123,115,95,.55); }
+.reference-paper-links a { align-items: start; border-bottom: 1px solid rgba(123,115,95,.42); color: #292b27; display: grid; gap: 12px; grid-template-columns: 28px minmax(0, 1fr) 18px; padding: 16px 0; text-decoration: none; }
+.reference-paper-links a:last-child { border-bottom: 0; }
+.reference-paper-links a:hover { color: #526653; }
+.reference-paper-links strong { color: #7a6a3e; font: 700 14px/1.2 "JetBrains Mono", monospace; }
+.reference-paper-links span { font-size: 20px; line-height: 1.15; }
+.reference-paper-links small { color: #676151; display: block; font: 11px/1.4 "JetBrains Mono", monospace; letter-spacing: .02em; margin: 7px 0 0; }
+.reference-paper-links b { color: #7a6a3e; font: 400 16px/1.2 Georgia, serif; }
+.reference-paper-drawing { inset: 0; pointer-events: none; position: absolute; z-index: 1; }
+.reference-scene .reference-paper-drawing-canvas { height: 100%; inset: 0; pointer-events: auto; position: absolute; touch-action: none; width: 100%; }
+.reference-paper-tools { align-items: center; background: rgba(255,251,240,.3); border: 1px solid rgba(38,70,83,.18); border-radius: 999px; box-shadow: 0 2px 8px rgba(41,43,39,.14); display: flex; gap: 4px; left: 50%; padding: 3px 4px; pointer-events: auto; position: absolute; top: 12px; transform: translateX(-50%); z-index: 3; }
+.reference-paper-tools-row { align-items: center; display: flex; gap: 4px; max-width: 0; opacity: 0; overflow: hidden; transition: max-width .2s ease, opacity .16s ease; visibility: hidden; }
+.reference-paper-tools.is-open .reference-paper-tools-row { max-width: 520px; opacity: 1; visibility: visible; }
+.reference-paper-tool,.reference-paper-tools-toggle { align-items: center; background: rgba(255,251,240,.42); border: 1px solid rgba(38,70,83,.2); border-radius: 7px; color: #264653; cursor: pointer; display: inline-flex; font: 700 14px/1 "JetBrains Mono",monospace; height: 25px; justify-content: center; min-width: 25px; padding: 0; }
+.reference-paper-tool.color { border-radius: 50%; min-width: 17px; width: 17px; }
+.reference-paper-tool.color[aria-pressed="true"],.reference-paper-tool.width[aria-pressed="true"],.reference-paper-tool.selected { box-shadow: inset 0 0 0 2px rgba(255,251,240,.8), 0 0 0 1px #264653; }
+.reference-paper-tool.width i { background: #264653; border-radius: 50%; display: block; }
+.reference-paper-tool:disabled { cursor: default; opacity: .35; }
+.reference-paper-tools-toggle { border-radius: 50%; font-size: 17px; }
+.reference-paper-content .reference-paper-updated { display: block; margin-top: 25px; }
 
 .reference-scene-error {
   position: absolute;
@@ -138,7 +162,9 @@ body:has(.reference-experience[data-reference-experience="desktop"])::before { d
   .reference-mobile-header { padding: 0 2px; }
   .reference-paper-content { padding: 34px 24px; }
   .reference-paper-content h2 { font-size: 34px; }
-  .reference-paper-content span { font-size: 18px; }
+  .reference-paper-links span { font-size: 18px; }
+  .reference-paper-tools { top: 8px; }
+  .reference-paper-tool.color { min-width: 15px; width: 15px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

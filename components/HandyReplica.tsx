@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 import ReferenceScene from "./ReferenceScene";
+import PaperDoodle from "./PaperDoodle";
 
 const DESKTOP_3D_MEDIA = "(min-width: 1024px) and (hover: hover) and (pointer: fine)";
 
@@ -10,13 +11,20 @@ type Props = { children: ReactNode };
 function PaperContent() {
   return (
     <div className="reference-paper-content">
-      <p>NOW / CURRENT DIRECTION</p>
-      <h2>Small systems, real feedback.</h2>
-      <hr />
-      <a href="/projects/bull-bear-exchange-island"><strong>01</strong><span>AI-native learning worlds</span><small>turn abstract ideas into places you can explore</small></a>
-      <a href="/projects/agent-jam"><strong>02</strong><span>Agent workbench / review loop</span><small>make context and decisions visible</small></a>
-      <a href="/projects/pandaai-quant"><strong>03</strong><span>Point-in-time quant research</span><small>keep signals auditable from data to result</small></a>
-      <small className="reference-paper-updated">Updated · September 2026 · Hong Kong</small>
+      <div className="reference-paper-static">
+        <div className="reference-paper-intro">
+          <p>NOW / CURRENT DIRECTION</p>
+          <h2>Small systems,<br />real feedback.</h2>
+          <p className="reference-paper-summary">A working page for ideas that become places, tools, and decisions you can inspect.</p>
+        </div>
+        <div className="reference-paper-links" aria-label="Current work">
+          <a href="/projects/bull-bear-exchange-island"><strong>01</strong><span>AI-native learning worlds<small>turn abstract ideas into places you can explore</small></span><b>↗</b></a>
+          <a href="/projects/agent-jam"><strong>02</strong><span>Agent workbench / review loop<small>make context and decisions visible</small></span><b>↗</b></a>
+          <a href="/projects/pandaai-quant"><strong>03</strong><span>Point-in-time quant research<small>keep signals auditable from data to result</small></span><b>↗</b></a>
+        </div>
+        <small className="reference-paper-updated">Updated · September 2026 · Hong Kong</small>
+      </div>
+      <PaperDoodle />
     </div>
   );
 }
