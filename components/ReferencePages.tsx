@@ -66,6 +66,10 @@ export function HomeScreen() {
   return (
     <main className="reference-page-shell reference-home-screen">
       <div className="reference-home-content" onDoubleClick={enterArticles} onPointerUp={handlePointerUp}>
+        <div className="reference-home-topline" aria-label="Workspace status">
+          <span><i aria-hidden="true" /> LAVINE / WORKSPACE</span>
+          <span>v2.0 · ONLINE</span>
+        </div>
         <div className="reference-home-intro" tabIndex={0} onKeyDown={(event) => { if (event.key === "Enter") router.push("/articles"); }}>
           <p className="reference-eyebrow">~/intro.md · double click to enter articles</p>
           <div className="reference-home-identity">
@@ -118,7 +122,11 @@ export function HomeScreen() {
               {FEATURED_PROJECTS.map((project) => (
                 <Link key={project.slug} href={`/projects/${project.slug}`} className="reference-home-project-card">
                   <span className="reference-home-project-id">{project.id}</span>
-                  <span className="reference-home-project-copy"><strong>{project.name}</strong><small>{project.summary}</small></span>
+                  <span className="reference-home-project-copy">
+                    <strong>{project.name}</strong>
+                    <small>{project.summary}</small>
+                    <span className="reference-home-project-tags">{project.tags.slice(0, 2).map((tag) => <b key={tag}>{tag}</b>)}</span>
+                  </span>
                   <span className="reference-home-project-arrow">↗</span>
                 </Link>
               ))}
